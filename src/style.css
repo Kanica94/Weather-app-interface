@@ -1,3 +1,44 @@
-h1 {
-  color: red;
+h3 {
+  padding-top: 10px;
+  color: #414040;
+  font-size: 30px;
+  line-height: 26px;
+}
+
+h6 {
+  color: #414040;
+}
+
+li {
+  font-size: 14px;
+  color: #555454;
+  line-height: 20px;
+  position: relative;
+  top: 10px;
+  list-style: none;
+}
+
+.card.p-4.mt-4.rounded {
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
+  margin: 0px auto;
+  width: 30rem;
+}
+
+.tableone {
+  text-align: center;
+  color: #555454;
+}
+
+.tabletwo {
+  text-align: center;
+  color: #555454;
+}
+
+.myName {
+  color: #414040;
+  text-align: center;
+  margin: 10px 0px;
+  font-size: 14px;
+  font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
 }
