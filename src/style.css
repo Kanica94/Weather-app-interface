@@ -25,6 +25,25 @@ li {
   width: 30rem;
 }
 
+.main-temp {
+  position: relative;
+  top: 25px;
+  color: #414040;
+  font-size: 44px;
+}
+
+.units {
+  position: relative;
+  bottom: 32px;
+  left: 50px;
+  font-size: 16px;
+}
+
+.main-image {
+  position: relative;
+  left: 25px;
+}
+
 .tableone {
   text-align: center;
   color: #555454;
