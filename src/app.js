@@ -1,3 +1,38 @@
+let now = new Date();
+function formatDate(date) {
+  let dates = date.getDate();
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minute = date.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[date.getMonth()];
+
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = `${day} ${dates} ${month},  ${hour}:${minute}`;
+}
+console.log(formatDate(now));
+
 function showTemperature(response) {
   console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
