@@ -38,27 +38,31 @@
           </form>
           <h3 id="city-name"></h3>
           <h6 id="date"></h6>
-          <div class="row">
-            <div class="col-3">
-              <h2 class="main-temp" id="mainTemp"></h2>
-              <span class="units">°C | <a href="#">°F</a></span>
-            </div>
-            <div class="col-4">
-              <img class="main-image" src="images/01d.png" alt="sun" />
-            </div>
-            <div class="col-5">
-              <ul>
-                <li id="description"></li>
-                <li>
-                  <strong><span id="max"></span></strong> |
-                  <span id="min"></span>
-                </li>
-                <li id="wind"></li>
-                <li id="humidity"></li>
-              </ul>
+          <div class="overview">
+            <div class="row">
+              <div class="col-7">
+                <div class="clearfix main-temperature">
+                  <div class="float-left">
+                    <strong
+                      ><span class="main-temp" id="mainTemp"></span></strong
+                    ><span class="units">°C | <a href="#">°F</a></span>
+                  </div>
+                  <img class="flloat-left" src="images/01d.png" alt="sun" />
+                </div>
+              </div>
+              <div class="col-5">
+                <ul>
+                  <li id="description"></li>
+                  <li>
+                    <strong><span id="max"></span></strong> |
+                    <span id="min"></span>
+                  </li>
+                  <li id="wind"></li>
+                  <li id="humidity"></li>
+                </ul>
+              </div>
             </div>
           </div>
-          <br />
           <hr />
           <div class="tableone">
             <div class="row">

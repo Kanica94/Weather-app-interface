@@ -36,7 +36,6 @@ console.log(formatDate(now));
 //
 
 function showTemperature(response) {
-  console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#mainTemp");
   temperatureElement.innerHTML = temperature;

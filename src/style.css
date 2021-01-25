@@ -16,12 +16,15 @@ h6 {
 }
 
 li {
+  position: relative;
+  top: 20px;
   font-size: 14px;
   color: #555454;
   line-height: 20px;
-  position: relative;
-  top: 10px;
   list-style: none;
+}
+
+li:first-letter {
   text-transform: capitalize;
 }
 
@@ -32,30 +35,31 @@ li {
   width: 30rem;
 }
 
+.overview {
+  margin-bottom: -40px;
+}
+
 .main-temp {
+  font-size: 54px;
+  line-height: 1;
+  font-weight: 400;
   position: relative;
-  top: 25px;
-  color: #414040;
-  font-size: 44px;
+  top: 30px;
+  color: #313131;
 }
 
 .units {
-  position: relative;
-  bottom: 32px;
-  left: 50px;
   font-size: 16px;
-}
-
-.main-image {
-  position: relative;
-  left: 25px;
-}
-
-.tableone {
-  text-align: center;
   color: #555454;
 }
 
+.main-temperature img {
+  position: relative;
+  left: 120px;
+  top: -40px;
+}
+
+.tableone,
 .tabletwo {
   text-align: center;
   color: #555454;
