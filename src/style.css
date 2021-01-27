@@ -50,8 +50,7 @@ li:first-letter {
 
 .main-temperature .units {
   font-size: 16px;
-  color: #555454;
-  text-decoration: none;
+  color: #414040;
 }
 
 .main-temperature img {
@@ -60,9 +59,12 @@ li:first-letter {
   top: -40px;
 }
 
+.main-temperature a {
+  text-decoration: none;
+}
+
 .main-temperature .active {
   color: #414040;
-  text-decoration: none;
   cursor: default;
 }
 
