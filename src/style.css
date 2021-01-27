@@ -12,7 +12,7 @@ h3 {
 }
 
 h6 {
-  color: #414040;
+  color: #555454;
 }
 
 li {
@@ -39,24 +39,31 @@ li:first-letter {
   margin-bottom: -40px;
 }
 
-.main-temp {
+.main-temperature .main-temp {
   font-size: 54px;
   line-height: 1;
   font-weight: 400;
   position: relative;
   top: 30px;
-  color: #313131;
+  color: #414040;
 }
 
-.units {
+.main-temperature .units {
   font-size: 16px;
   color: #555454;
+  text-decoration: none;
 }
 
 .main-temperature img {
   position: relative;
   left: 120px;
   top: -40px;
+}
+
+.main-temperature .active {
+  color: #414040;
+  text-decoration: none;
+  cursor: default;
 }
 
 .tableone,
