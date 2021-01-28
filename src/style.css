@@ -74,6 +74,32 @@ li:first-letter {
   color: #555454;
 }
 
+.weather-forecast-time small {
+  color: #555454;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  height: 15px;
+  line-height: 15px;
+}
+
+.weather-forecast-time img {
+  display: block;
+  margin: 0 auto;
+  height: 48px;
+  width: 48px;
+}
+
+.weather-forecast-time .forecast-time {
+  text-align: center;
+  color: #555454;
+  font-size: 13px;
+  font-weight: 400;
+  height: auto;
+  line-height: 15px;
+  white-space: nowrap;
+}
+
 .myName {
   color: #414040;
   text-align: center;

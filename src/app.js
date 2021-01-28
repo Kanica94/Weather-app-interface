@@ -36,6 +36,22 @@ function formatDate(date) {
 }
 console.log(formatDate(now));
 
+// forecast time
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minute = date.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+
+  return `${hour}:${minute}`;
+}
+
 // temperature data
 
 function showTemperature(response) {
@@ -68,6 +84,29 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+// forecast by time
+
+function displayHourlyForecast(response) {
+  let hourlyForecast = document.querySelector("#forecast-one");
+  hourlyForecast.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    hourlyForecast.innerHTML += ` <div class="col-2">
+                <small>${formatHours(forecast.dt * 1000)}</small>
+                <img src="https://openweathermap.org/img/wn/${
+                  forecast.weather[0].icon
+                }@2x.png"/>
+                <div class="forecast-time">${Math.round(
+                  forecast.main.temp
+                )}°</div>
+              </div>`;
+  }
+}
+
+// forecast by day
+
 // search data
 
 function search(city) {
@@ -75,6 +114,9 @@ function search(city) {
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showTemperature);
+
+  let apiUrlFor = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrlFor).then(displayHourlyForecast);
 }
 
 function handleSubmit(event) {
@@ -92,16 +134,15 @@ function locationButton(position) {
   let unit = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showTemperature);
+
+  let apiUrlForcast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrlForcast).then(displayHourlyForecast);
 }
 
 function showLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(locationButton);
 }
-
-// forecast by time
-
-// forecast by day
 
 // temperature units
 
