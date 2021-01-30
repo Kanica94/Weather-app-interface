@@ -52,6 +52,17 @@ function formatHours(timestamp) {
   return `${hour}:${minute}`;
 }
 
+// forecast day
+
+function formatDay(timestamp) {
+  let dayForecast = new Date(timestamp);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  let day = days[dayForecast.getDay()];
+
+  return `${day}`;
+}
+
 // temperature data
 
 function showTemperature(response) {
@@ -84,7 +95,7 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-// forecast by time
+// forecast by time and day
 
 function displayHourlyForecast(response) {
   let hourlyForecast = document.querySelector("#forecast-one");
@@ -103,15 +114,40 @@ function displayHourlyForecast(response) {
                 )}°</div>
               </div>`;
   }
-}
 
-// forecast by day
+  let dayForecast = document.querySelector("#forecast-two");
+  dayForecast.innerHTML = null;
+  let forecastByDay = null;
+
+  for (let index = 2; index < 35; index += 8) {
+    forecastByDay = response.data.list[index];
+    dayForecast.innerHTML += `<div class="col-4"><div class="day">${formatDay(
+      forecastByDay.dt * 1000
+    )}</div></div>
+              <div class="col-4">
+                <img src="https://openweathermap.org/img/wn/${
+                  forecastByDay.weather[0].icon
+                }@2x.png"/>
+              </div>
+              <div class="col-4">
+                <div class="day-temp">
+                  <strong> <span id="day-max">${Math.round(
+                    forecastByDay.main.temp_max
+                  )}°</span> </strong> |
+                  <span id="day-min">${Math.round(
+                    forecastByDay.main.temp_min
+                  )}°</span>
+                </div>
+              </div>`;
+  }
+}
 
 // search data
 
 function search(city) {
   let apiKey = "0864ac7dec2540b572d96a9d7503af67";
   let unit = "metric";
+
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showTemperature);
 
