@@ -104,28 +104,28 @@ function showTemperature(response) {
 function displayForecast(response) {
   let hourlyForecast = document.querySelector("#forecast-one");
   hourlyForecast.innerHTML = null;
-  let forecast = null;
+  let forecastByHour = null;
 
   for (let index = 0; index < 6; index++) {
-    forecast = response.data.list[index];
+    forecastByHour = response.data.hourly[index];
     hourlyForecast.innerHTML += ` <div class="col-2">
-                <small>${formatHours(forecast.dt * 1000)}</small>
+                <small>${formatHours(forecastByHour.dt * 1000)}</small>
                 <img src="https://openweathermap.org/img/wn/${
-                  forecast.weather[0].icon
+                  forecastByHour.weather[0].icon
                 }@2x.png"/>
                 <div class="forecast-time">${Math.round(
-                  forecast.main.temp
+                  response.data.hourly[0].temp
                 )}°</div>
               </div>`;
   }
 
-  let dayForecast = document.querySelector("#forecast-two");
-  dayForecast.innerHTML = null;
+  let dailyForecast = document.querySelector("#forecast-two");
+  dailyForecast.innerHTML = null;
   let forecastByDay = null;
 
-  for (let index = 2; index < 35; index += 8) {
-    forecastByDay = response.data.list[index];
-    dayForecast.innerHTML += `<div class="col-4"><div class="day">${formatDay(
+  for (let index = 1; index < 6; index++) {
+    forecastByDay = response.data.daily[index];
+    dailyForecast.innerHTML += `<div class="col-4"><div class="day">${formatDay(
       forecastByDay.dt * 1000
     )}</div></div>
               <div class="col-4">
@@ -136,10 +136,10 @@ function displayForecast(response) {
               <div class="col-4">
                 <div class="day-temp">
                   <strong> <span id="day-max">${Math.round(
-                    forecastByDay.main.temp_max
+                    forecastByDay.temp.max
                   )}°</span> </strong> |
                   <span id="day-min">${Math.round(
-                    forecastByDay.main.temp_min
+                    forecastByDay.temp.min
                   )}°</span>
                 </div>
               </div>`;
