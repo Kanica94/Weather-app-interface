@@ -1,3 +1,10 @@
+body {
+  background-image: url(https://i.pinimg.com/originals/82/ce/dd/82ceddecd6713415b71d545b750058c5.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 input {
   padding: 4px;
   border-radius: 5px;
@@ -29,7 +36,7 @@ li:first-letter {
 }
 
 .card.p-4.mt-4.rounded {
-  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background-image: linear-gradient(120deg, #7eabf3 0%, #afe0f7 100%);
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
   margin: 0px auto;
   width: 30rem;
@@ -130,7 +137,7 @@ li:first-letter {
 .myName {
   color: #414040;
   text-align: center;
-  margin: 10px 0px;
-  font-size: 14px;
+  margin: 5px 0px 50px 0px;
+  font-size: 16px;
   font-family: Cerebri Sans, Helvetica, Arial, sans-serif;
 }
