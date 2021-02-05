@@ -91,12 +91,10 @@ function showTemperature(response) {
   let timestamp = response.data.current.dt;
   let timezoneOffset = response.data.timezone_offset;
   let localTimestamp = timestamp + timezoneOffset;
-  let time = localTimestamp * 1000;
-  let date = new Date(time);
-  let DateFormat = date.toLocaleTimeString();
+  let date = formatHours(localTimestamp * 1000);
 
   dateElement.innerHTML = `<small>
-  ${day} ${dates} ${month},  ${DateFormat}</small>`;
+  ${day} ${dates} ${month},  ${date}</small>`;
 }
 
 // forecast by time and day
@@ -108,8 +106,10 @@ function displayForecast(response) {
 
   for (let index = 0; index < 6; index++) {
     forecastByHour = response.data.hourly[index];
+    let localTimestamp = forecastByHour.dt + response.data.timezone_offset;
+
     hourlyForecast.innerHTML += ` <div class="col-2">
-                <small>${formatHours(forecastByHour.dt * 1000)}</small>
+                <small>${formatHours(localTimestamp * 1000)}</small>
                 <img src="https://openweathermap.org/img/wn/${
                   forecastByHour.weather[0].icon
                 }@2x.png"/>
@@ -125,8 +125,10 @@ function displayForecast(response) {
 
   for (let index = 1; index < 6; index++) {
     forecastByDay = response.data.daily[index];
+    let localTimestamp = forecastByDay.dt + response.data.timezone_offset;
+
     dailyForecast.innerHTML += `<div class="col-4"><div class="day">${formatDay(
-      forecastByDay.dt * 1000
+      localTimestamp * 1000
     )}</div></div>
               <div class="col-4">
                 <img src="https://openweathermap.org/img/wn/${
