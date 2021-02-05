@@ -1,40 +1,37 @@
 // date and time
 
 let now = new Date();
-function formatDate(date) {
-  let dates = date.getDate();
-  let hour = date.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
-  }
-  let minute = date.getMinutes();
-  if (minute < 10) {
-    minute = `0${minute}`;
-  }
-
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  let day = days[date.getDay()];
-  let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  let month = months[date.getMonth()];
-
-  let dateElement = document.querySelector("#date");
-  dateElement.innerHTML = `<small><em>Last updated:
-  ${day} ${dates} ${month},  ${hour}:${minute}</em></small>`;
+let dates = now.getDate();
+let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
 }
-console.log(formatDate(now));
+let minute = now.getMinutes();
+if (minute < 10) {
+  minute = `0${minute}`;
+}
+
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let day = days[now.getDay()];
+let months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+let month = months[now.getMonth()];
+
+let dateElement = document.querySelector("#date");
+dateElement.innerHTML = `<small>
+  ${day} ${dates} ${month},  ${hour}:${minute}</small>`;
 
 // forecast time
 
@@ -90,6 +87,16 @@ function showTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.current.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.current.weather[0].description);
+
+  let timestamp = response.data.current.dt;
+  let timezoneOffset = response.data.timezone_offset;
+  let localTimestamp = timestamp + timezoneOffset;
+  let time = localTimestamp * 1000;
+  let date = new Date(time);
+  let DateFormat = date.toLocaleTimeString();
+
+  dateElement.innerHTML = `<small>
+  ${day} ${dates} ${month},  ${DateFormat}</small>`;
 }
 
 // forecast by time and day
