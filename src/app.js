@@ -91,10 +91,10 @@ function showTemperature(response) {
   let timestamp = response.data.current.dt;
   let timezoneOffset = response.data.timezone_offset;
   let localTimestamp = timestamp + timezoneOffset;
-  let date = formatHours(localTimestamp * 1000);
+  let time = formatHours(localTimestamp * 1000);
 
   dateElement.innerHTML = `<small>
-  ${day} ${dates} ${month},  ${date}</small>`;
+  ${day} ${dates} ${month},  ${time}</small>`;
 }
 
 // forecast by time and day
