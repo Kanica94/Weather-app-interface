@@ -114,7 +114,7 @@ function displayForecast(response) {
                   forecastByHour.weather[0].icon
                 }@2x.png"/>
                 <div class="forecast-time">${Math.round(
-                  response.data.hourly[0].temp
+                  forecastByHour.temp
                 )}°</div>
               </div>`;
   }
@@ -151,7 +151,9 @@ function displayForecast(response) {
 // City coords in real time
 
 function getCityCoords(response) {
-  document.querySelector("#city-name").innerHTML = `${response.data.name}`;
+  document.querySelector(
+    "#city-name"
+  ).innerHTML = `${response.data.name}, ${response.data.sys.country}`;
 
   let cityLatitude = response.data.coord.lat;
   let cityLongitude = response.data.coord.lon;
