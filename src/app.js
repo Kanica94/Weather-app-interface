@@ -1,37 +1,41 @@
 // date and time
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let dates = now.getDate();
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minute = now.getMinutes();
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[now.getDay()];
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[now.getMonth()];
+
+  return `<small>
+  ${day} ${dates} ${month},  ${formatHours(now)}</small>`;
+}
 
 let now = new Date();
-let dates = now.getDate();
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
-}
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = `0${minute}`;
-}
-
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let day = days[now.getDay()];
-let months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-let month = months[now.getMonth()];
-
 let dateElement = document.querySelector("#date");
-dateElement.innerHTML = `<small>
-  ${day} ${dates} ${month},  ${hour}:${minute}</small>`;
+dateElement.innerHTML = formatDate(now);
 
 // forecast time
 
@@ -91,10 +95,8 @@ function showTemperature(response) {
   let timestamp = response.data.current.dt;
   let timezoneOffset = response.data.timezone_offset;
   let localTimestamp = timestamp + timezoneOffset;
-  let time = formatHours(localTimestamp * 1000);
 
-  dateElement.innerHTML = `<small>
-  ${day} ${dates} ${month},  ${time}</small>`;
+  dateElement.innerHTML = formatDate(localTimestamp * 1000);
 }
 
 // forecast by time and day
